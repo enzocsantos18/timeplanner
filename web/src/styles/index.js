@@ -8,10 +8,15 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
   body {
-    background-color: #F3F3F3;
+    /* background-color: #f5f5f5; */
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     font-family: sans-serif;
+    height: 100vh;
+  }
+  #root{
+    height: 100vh;
+
   }
 `
 export default GlobalStyle;
