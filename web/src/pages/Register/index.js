@@ -1,7 +1,8 @@
 import React from 'react';
+import {useDispatch} from 'react-redux'
 import {Input, Form} from '@rocketseat/unform'
 import * as Yup from 'yup'
-
+import {signUpRequest} from '../../store/modules/auth/actions'
 const schema = Yup.object().shape({
   name: Yup.string()
   .required('O campo nome é obrigatório.'),
@@ -14,8 +15,12 @@ const schema = Yup.object().shape({
 )
 
 function Register() {
-  function handleSubmit(data){
-    console.log(data)
+
+  const dispatch = useDispatch();
+
+  function handleSubmit({name, email, password}){
+   dispatch(signUpRequest(name, email, password))
+
   }
   return (
     <div>

@@ -2,8 +2,11 @@ import React from 'react';
 
 import {Container, ProjectList, SideBar } from './styles';
 import Project from '../../components/Project'
-function Home() {
+import api from '../../services/api';
 
+
+function Home() {
+  api.get('project')
   return (
     <Container>
     <SideBar>
