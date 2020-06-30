@@ -1,5 +1,6 @@
 import {takeLatest, call,put, all} from 'redux-saga/effects'
 import history from '../../../services/history'
+import {toast} from 'react-toastify'
 
 import api from '../../../services/api'
 import { signInSuccess, signFailure } from './actions';
@@ -18,7 +19,9 @@ export function* signIn({payload}) {
     history.push('/home')
   }
   catch(err){
+    toast.error("Usuário e/ou senha inválidos");
     yield put(signFailure());
+    
   }
 }
 
