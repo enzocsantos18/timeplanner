@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 import { Card, ActionArea } from "./styles";
 
-function Project() {
+function Project({name, category, id}) {
   const [timer, setTimer] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
@@ -46,8 +46,8 @@ function Project() {
   }
   return (
     <Card>
-      <span>Estudo</span>
-      <h1>Estudar</h1>
+      <span>{category}</span>
+      <h1>{name}</h1>
       <h2>{toHHMMSS(timer)}</h2>
 
       <ActionArea>

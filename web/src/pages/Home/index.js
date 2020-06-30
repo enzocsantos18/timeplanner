@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {Container, ProjectList, SideBar } from './styles';
 import {useDispatch} from 'react-redux';
@@ -9,12 +9,20 @@ import api from '../../services/api';
 
 function Home() {
   const dispatch = useDispatch();
+  const [projects, setProjects] = useState([])
 
+  useEffect(() =>{
+    listProjects()
+  }, [])
+  async function listProjects(){
+    const projects = await api.get('/projects')
+
+    setProjects(projects.data)
+  }
   function handleSignOut(){
     dispatch(signOut())
 
   }
-  api.get('project')
   return (
     <Container>
     <SideBar>
@@ -22,7 +30,11 @@ function Home() {
       <button onClick={handleSignOut}>Sair</button>
     </SideBar>
     <ProjectList>
-      <Project></Project>
+      {
+        projects.map(project =>(
+          <Project key={project.id} name={project.name} id={project.id} category={project.Category.name}  />
+        ))
+      }
     </ProjectList>
   </Container>
   );
