@@ -7,14 +7,13 @@ import Routes from './routes'
 function App() {
 
   return (
-    <div>
-      <GlobalStyle/>
-      <Router history={history}>
+    // <>
+    <Router history={history}>
 
-      <Routes />
+        <Routes />
+        <GlobalStyle/>
       </Router>
-
-    </div>
+    // </>
   );
 
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import {Form, Input} from '@rocketseat/unform'
-import {Link} from 'react-router-dom'
+import {Input, Form} from '@rocketseat/unform'
 import * as Yup from 'yup'
 
-
 const schema = Yup.object().shape({
+  name: Yup.string()
+  .required('O campo nome é obrigatório.'),
   email: Yup.string()
     .email('Insira um e-mail válido')
     .required('O campo e-mail é obrigatório.'),
@@ -13,22 +13,22 @@ const schema = Yup.object().shape({
 }
 )
 
-function Login() {
+function Register() {
   function handleSubmit(data){
     console.log(data)
   }
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Register</h1>
       <Form schema={schema} onSubmit={handleSubmit}>
+
+        <Input name="name" type="text"/>
         <Input name="email" type="email"/>
         <Input name="password" type="password"/>
-        <button type="submit">Entrar</button>
-
-        <Link to='/register'>Registrar</Link>
+        <button type="submit">Cadastrar</button>
       </Form>
     </div>
   );
 }
 
-export default Login;
+export default Register;
