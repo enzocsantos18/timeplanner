@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Card, ActionArea } from "./styles";
+import api from '../../services/api'
 
 function Project({name, category, id}) {
   const [timer, setTimer] = useState(0);
@@ -33,15 +34,29 @@ function Project({name, category, id}) {
     return () => clearInterval(interval);
   }, [isActive, timer]);
 
-  function handleStop() {
+  async function handleStop(id) {
     clearInterval(interval);
 
     const res = window.confirm("Deseja mesmo parar a contagem?");
     if (res) {
+      try{
+        await api.post('/time',{
+          time: timer,
+          project_id: id
+        })
+      }
+      catch(err){
+
+      }
       setTimer(0);
       setIsActive(false);
+
+
     } else {
-      setTimer(timer + 1);
+      if(timer !== 0){
+        setTimer(timer + 1);
+
+      }
     }
   }
   return (
@@ -53,7 +68,7 @@ function Project({name, category, id}) {
       <ActionArea>
         <span>Ver histórico</span>
         <button onClick={handleToggle}>{isActive ? "Pause" : "Start"}</button>
-        <button onClick={handleStop}>Parar</button>
+        {timer ? <button onClick={ () => handleStop(id)}>Parar</button> : null}
       </ActionArea>
     </Card>
   );
