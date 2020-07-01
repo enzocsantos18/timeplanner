@@ -29,13 +29,30 @@ class ProjectController{
         category_id,
         user_id : req.userId
       })
+      return res.json(project)
     }
     catch(err){
       return res.status(400).json({error: "Could not create project"})
     }
     
 
-    return res.json(project)
+  }
+
+  async delete(req, res){
+
+     const project = await Project.destroy({
+        where:{
+          id: req.params.id,
+          user_id: req.userId
+        }
+      })
+
+    if(!project){
+
+        res.status(400).json({error: 'Cannot delete project'})
+    }
+
+    return res.json({ok: true}) 
   }
 }
 
