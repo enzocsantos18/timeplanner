@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {Container, ProjectList, SideBar } from './styles';
+import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
 import {signOut} from '../../store/modules/auth/actions'
 import Project from '../../components/Project'
@@ -26,7 +27,7 @@ function Home() {
   return (
     <Container>
     <SideBar>
-      <p>Criar novo projeto</p>
+      <Link to="/new-project">Criar novo projeto</Link>
       <button onClick={handleSignOut}>Sair</button>
     </SideBar>
     <ProjectList>
