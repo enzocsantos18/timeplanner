@@ -8,6 +8,7 @@ export const Header = styled.div`
   justify-content: center;
   height: 50px;
   padding: 20px;
+
   button{
     color: white;
     background-color: #3F3D56;
@@ -21,6 +22,8 @@ export const Header = styled.div`
     padding: 10px;
   }
 `;
+
+
 export const Container = styled.div`
   width: 1200px;
   margin: auto;
@@ -35,5 +38,15 @@ export const ProjectList = styled.div`
   grid-auto-rows: 172px;
   grid-template-columns: auto auto auto auto;
   grid-gap: 16px;
+`;
+
+export const InfoList = styled.div`
+  display: inline-grid;
+  grid-auto-rows: 122px;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  background: white;
 `;
 

@@ -1,28 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-
+import timeConverter from '../../utils/timeConverter';
 import { Card, ActionArea } from "./styles";
 import {FiPlay, FiPause, FiCheckCircle} from 'react-icons/fi'
 import api from '../../services/api'
 
-function Project({name, category, id}) {
+function Project({name, category, id, onClick}) {
   const [timer, setTimer] = useState(0);
   const [isActive, setIsActive] = useState(false);
-
   function handleToggle() {
     setIsActive(!isActive);
   }
-  var toHHMMSS = (secs) => {
-    var sec_num = parseInt(secs, 10);
-    var hours = Math.floor(sec_num / 3600);
-    var minutes = Math.floor(sec_num / 60) % 60;
-    var seconds = sec_num % 60;
 
-    return [hours, minutes, seconds]
-      .map((v) => (v < 10 ? "0" + v : v))
-      .filter((v, i) => v !== "00" || i > 0)
-      .join(":");
-  };
   var interval = null;
   useEffect(() => {
     if (isActive) {
@@ -60,13 +49,15 @@ function Project({name, category, id}) {
       }
     }
   }
+
+  function handleSelect(){
+    onClick()
+  }
   return (
-    <Card>
+    <Card onClick={handleSelect}>
       <h1>{name}</h1>
-
-
       <ActionArea>
-      <h2>{toHHMMSS(timer)}</h2>
+      <h2>{timeConverter(timer)}</h2>
       <div>
 
         <button onClick={handleToggle}>{isActive ? (<FiPause size={24} color="#3F3D56"/>): <FiPlay size={24} color="#3F3D56"/>}</button>

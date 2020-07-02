@@ -6,6 +6,7 @@ export const Card = styled.div`
   width: 280px;
   border-radius: 4px;
   padding: 20px;
+ 
   h1{
     font-size: 20px;
   }
@@ -20,6 +21,11 @@ export const Card = styled.div`
   h2{
     margin: 0;
   }
+
+  &:hover{
+    background-color: #8884D830;
+    cursor: pointer;
+  }
 `;
 
 export const ActionArea = styled.div`
@@ -33,7 +39,7 @@ export const ActionArea = styled.div`
   }
   button{
 
-    background-color: white;
+    background-color: transparent;
     border: 0;
     padding: 10px;
     &:hover{

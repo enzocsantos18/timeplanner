@@ -1,5 +1,8 @@
+
 import React, {useEffect, useState} from "react";
-import {useHistory} from 'react-router-dom'
+
+import { AddContainer } from "./styles";
+
 import { Input, Form, Select } from "@rocketseat/unform";
 import api from '../../services/api'
 import * as Yup from "yup";
@@ -10,12 +13,8 @@ const schema = Yup.object().shape({
   category: Yup.string().required("O campo categoria é obrigatório."),
 
 });
+function NewProject({ isOpen = false, createProject }) {
 
-
-
-function ProjectRegistration() {
-  
-  let history = useHistory();
   const [categories, setCategories] = useState([]);
   useEffect(() =>{
     getCategories()
@@ -33,16 +32,16 @@ function ProjectRegistration() {
       name, 
       category_id: category
     })
-    history.push('/home')
+    createProject();
       
 
   }
 
-
-  
   return (
-    <div>
-      <h1>Criar projeto</h1>
+    <>
+      {isOpen ? (
+        <AddContainer>
+         <h1>Criar projeto</h1>
       <Form schema={schema} onSubmit={handleSubmit}>
         <Input name="name" label="Nome do projeto" type="text" />
         <Select
@@ -52,8 +51,10 @@ function ProjectRegistration() {
       />
         <button type="submit">Cadastrar</button>
       </Form>
-    </div>
+        </AddContainer>
+      ) : null}
+    </>
   );
 }
 
-export default ProjectRegistration;
+export default NewProject;
