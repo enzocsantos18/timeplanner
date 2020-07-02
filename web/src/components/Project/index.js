@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Card, ActionArea } from "./styles";
+import {FiPlay, FiPause, FiCheckCircle} from 'react-icons/fi'
 import api from '../../services/api'
 
 function Project({name, category, id}) {
@@ -61,15 +62,18 @@ function Project({name, category, id}) {
   }
   return (
     <Card>
-      <span>{category}</span>
       <h1>{name}</h1>
-      <h2>{toHHMMSS(timer)}</h2>
+
 
       <ActionArea>
-        <span>Ver histórico</span>
-        <button onClick={handleToggle}>{isActive ? "Pause" : "Start"}</button>
-        {timer ? <button onClick={ () => handleStop(id)}>Parar</button> : null}
+      <h2>{toHHMMSS(timer)}</h2>
+      <div>
+
+        <button onClick={handleToggle}>{isActive ? (<FiPause size={24} color="#3F3D56"/>): <FiPlay size={24} color="#3F3D56"/>}</button>
+        {timer ? <button onClick={ () => handleStop(id)}><FiCheckCircle size={24} color="#3F3D56"/></button> : null}
+      </div>
       </ActionArea>
+      <span>{category}</span>
     </Card>
   );
 }

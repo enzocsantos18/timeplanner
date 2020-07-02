@@ -1,39 +1,43 @@
 import styled from 'styled-components'
 
 export const Card = styled.div`
-  background-color: #fff;
-  width: 300px;
-  border-radius: 4px;
-  height: 200px;
-  padding: 16px;
 
+  background-color: white;
+  width: 280px;
+  border-radius: 4px;
+  padding: 20px;
+  h1{
+    font-size: 20px;
+  }
   span{
-    font-size: 14px;
-    color: #7E7E7E;
-    font-weight: bold;
+    color: #9e9e9e;
+
+  }
+  h1{
+    color: #3d3d3d;
   }
 
   h2{
-    font-size: 64px;
+    margin: 0;
   }
 `;
 
 export const ActionArea = styled.div`
+  padding: 16px 0px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
+  justify-content: space-between;
+  
+  h2{
+    color: #3F3D56;
+  }
   button{
-    background-color: #0085FF;
-    padding: 8px;
-    border: 0;
-    outline: 0;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
 
+    background-color: white;
+    border: 0;
+    padding: 10px;
     &:hover{
-      background-color: #0085D0;
+
     }
   }
 `;

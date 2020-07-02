@@ -1,22 +1,39 @@
 import styled from 'styled-components'
-export const Container = styled.div`
+export const Header = styled.div`
+  background-color: #E6E6E6;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  height: 50px;
+  padding: 20px;
+  button{
+    color: white;
+    background-color: #3F3D56;
+    width: 100px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 0;
+  }
+  a{
+    text-decoration: none;
+    padding: 10px;
+  }
+`;
+export const Container = styled.div`
   width: 1200px;
-  padding-top: 20px;
   margin: auto;
+  h2{
+    font-size: 48px;
+    margin: 16px 0px;
+    color: #3F3D54;
+  }
 `;
 export const ProjectList = styled.div`
   display: inline-grid;
-  grid-auto-rows: 200px;
-  grid-template-columns: auto auto auto;
+  grid-auto-rows: 172px;
+  grid-template-columns: auto auto auto auto;
   grid-gap: 16px;
 `;
 
-export const SideBar = styled.div`
-  background-color: #fff;
-  min-width: 250px;
-  margin-right: 16px;
-  height: 80vh;
-  border-radius: 4px
-`;

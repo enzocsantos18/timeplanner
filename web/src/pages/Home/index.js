@@ -1,43 +1,50 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 
-import {Container, ProjectList, SideBar } from './styles';
-import {Link} from 'react-router-dom'
-import {useDispatch} from 'react-redux';
-import {signOut} from '../../store/modules/auth/actions'
-import Project from '../../components/Project'
-import api from '../../services/api';
-
+import { Container, ProjectList, Header } from "./styles";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signOut } from "../../store/modules/auth/actions";
+import Project from "../../components/Project";
+import api from "../../services/api";
 
 function Home() {
   const dispatch = useDispatch();
-  const [projects, setProjects] = useState([])
+  const [projects, setProjects] = useState([]);
 
-  useEffect(() =>{
-    listProjects()
-  }, [])
-  async function listProjects(){
-    const projects = await api.get('/projects')
+  useEffect(() => {
+    listProjects();
+  }, []);
+  async function listProjects() {
+    const projects = await api.get("/projects");
 
-    setProjects(projects.data)
+    setProjects(projects.data);
   }
-  function handleSignOut(){
-    dispatch(signOut())
-
+  function handleSignOut() {
+    dispatch(signOut());
   }
   return (
-    <Container>
-    <SideBar>
-      <Link to="/new-project">Criar novo projeto</Link>
-      <button onClick={handleSignOut}>Sair</button>
-    </SideBar>
-    <ProjectList>
-      {
-        projects.map(project =>(
-          <Project key={project.id} name={project.name} id={project.id} category={project.Category.name}  />
-        ))
-      }
-    </ProjectList>
-  </Container>
+    <>
+      <Header>
+        <div>
+          <Link to="/new-project">Criar novo projeto</Link>
+          <button onClick={handleSignOut}>Sair</button>
+        </div>
+      </Header>
+      <Container>
+          <h2>Projetos</h2>
+        <ProjectList>
+          {projects.map((project) => (
+            <Project
+              key={project.id}
+              name={project.name}
+              id={project.id}
+              category={project.Category.name}
+            />
+          ))}
+        </ProjectList>
+        <h2>Desempenho</h2>
+      </Container>
+    </>
   );
 }
 
