@@ -50,11 +50,8 @@ function Project({name, category, id, onClick}) {
     }
   }
 
-  function handleSelect(){
-    onClick()
-  }
   return (
-    <Card onClick={handleSelect}>
+    <Card onClick={onClick}>
       <h1>{name}</h1>
       <ActionArea>
       <h2>{timeConverter(timer)}</h2>

@@ -16,7 +16,7 @@ function Home() {
   const [projects, setProjects] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(0);
-
+  const [projectInfo, setProjectInfo] = useState(0);
 
   useEffect(() => {
     listProjects();
@@ -29,11 +29,28 @@ function Home() {
   function handleSignOut() {
     dispatch(signOut());
   }
+
+  useEffect(() =>{
+    api.get(`time/${selectedProject}`).then(res =>{
+      setProjectInfo(res.data)
+    })
+  }, [selectedProject])
+
+  async function handleProjectClick(id){
+    selectedProject === id ? setSelectedProject(0) : setSelectedProject(id)
+    
+    if(selectedProject !== 0){
+      const projectInfos = await api.get(`time/${id}`)
+      setProjectInfo(projectInfos.data)
+
+    }
+
+  }
   return (
     <>
       <Header>
         <div>
-          <Link  onClick={() => setIsOpen(!isOpen)}>Criar novo projeto</Link>
+          <span  onClick={() => setIsOpen(!isOpen)}>Criar novo projeto</span>
           <NewProject isOpen={isOpen} createProject={() => setIsOpen(false) }></NewProject>
   
           <button onClick={handleSignOut}>Sair</button>
@@ -45,8 +62,8 @@ function Home() {
           {projects.map((project) => (
             <Project
               onClick={() => {
-                selectedProject === project.id ? setSelectedProject(0) : setSelectedProject(project.id)
-              } }
+                handleProjectClick(project.id)
+              }}
               key={project.id}
               name={project.name}
               id={project.id}
@@ -56,14 +73,15 @@ function Home() {
         </ProjectList>
         <h2>Desempenho</h2>
         {
+        
           selectedProject ? (
+            
           <InfoList>
-            <InfoCard title="Hoje" value={1000} />
-            <InfoCard title="Essa semana" value={1200}/>
-            <InfoCard title="Esse mês" value={2000}/>
-            <InfoCard title="Esse ano" value={400}/>
+            <InfoCard title="Hoje" value={projectInfo.day} />
+            <InfoCard title="Essa semana" value={projectInfo.week} />
+            <InfoCard title="Esse mês" value={projectInfo.month}/>
+            <InfoCard title="Esse ano" value={projectInfo.total} />
           </InfoList>
-
           ): null
         }
 

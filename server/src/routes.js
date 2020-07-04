@@ -25,6 +25,8 @@ routes.post('/projects',  ProjectController.store);
 routes.delete('/projects/:id',  ProjectController.delete);
 routes.get('/categories',  CategoryController.index);
 routes.post('/time',  TimeController.store);
+routes.get('/time/:id',  TimeController.index);
+
 
 
 

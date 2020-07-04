@@ -17,8 +17,8 @@ export const Header = styled.div`
     border-radius: 4px;
     border: 0;
   }
-  a{
-    text-decoration: none;
+  span{
+    color: #3F3D56;
     padding: 10px;
   }
 `;
