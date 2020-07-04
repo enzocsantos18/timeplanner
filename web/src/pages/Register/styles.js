@@ -4,6 +4,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+background-color: #C9C9C9;
+
 `;
 export const ElementsContainer = styled.div`
   display: flex;
@@ -24,13 +26,12 @@ img{
 `;
 export const ContainerInput = styled.div`
   background-color: #E6E6E6;
-  border-radius: 16px;
+  border-radius: 0px 16px 16px 0px;
   display: flex;
   flex-direction: column;
  justify-content: center;
   width: 500px;
   padding: 50px;
-
   h2{
     margin-bottom: 16px;
     font-size: 40px;

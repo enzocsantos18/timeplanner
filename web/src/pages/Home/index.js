@@ -57,21 +57,29 @@ function Home() {
         </div>
       </Header>
       <Container>
-        <h2>Projetos</h2>
-        <ProjectList>
-          {projects.map((project) => (
-            <Project
-              onClick={() => {
-                handleProjectClick(project.id)
-              }}
-              key={project.id}
-              name={project.name}
-              id={project.id}
-              category={project.Category.name}
-            />
-          ))}
-        </ProjectList>
-        <h2>Desempenho</h2>
+        {
+          projects == 0 ? (<h1>Você ainda não tem projetos cadastrados, adicione novos projetos.</h1>)
+          :
+          (
+            <>
+            <h2>Projetos</h2>
+            <ProjectList>
+              {projects.map((project) => (
+                <Project
+                  onClick={() => {
+                    handleProjectClick(project.id)
+                  }}
+                  key={project.id}
+                  name={project.name}
+                  id={project.id}
+                  category={project.Category.name}
+                />
+              ))}
+            </ProjectList>
+            <h2>Desempenho</h2>
+            </>
+          )
+        }
         {
         
           selectedProject ? (
