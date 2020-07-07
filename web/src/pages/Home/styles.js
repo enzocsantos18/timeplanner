@@ -20,6 +20,12 @@ export const Header = styled.div`
   span{
     color: #3F3D56;
     padding: 10px;
+
+    &:hover{
+
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -27,6 +33,7 @@ export const Header = styled.div`
 export const Container = styled.div`
   width: 1200px;
   margin: auto;
+
   h2{
     font-size: 48px;
     margin: 16px 0px;
@@ -35,7 +42,7 @@ export const Container = styled.div`
 `;
 export const ProjectList = styled.div`
   display: inline-grid;
-  grid-auto-rows: 172px;
+  grid-auto-rows: 192px;
   grid-template-columns: auto auto auto auto;
   grid-gap: 16px;
 `;
@@ -50,3 +57,18 @@ export const InfoList = styled.div`
   background: white;
 `;
 
+export const Error = styled.div`
+    width: 500px;
+    text-align: center;
+    margin: auto; 
+    margin-top: 10%;
+    img{
+      width: 500px;
+      margin-bottom: 16px;
+    }
+  h3{
+    color: #3F3D54;
+    font-size: 25px;
+  }
+ 
+`;

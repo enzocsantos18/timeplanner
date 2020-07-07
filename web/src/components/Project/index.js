@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import timeConverter from '../../utils/timeConverter';
 import { Card, ActionArea } from "./styles";
-import {FiPlay, FiPause, FiCheckCircle} from 'react-icons/fi'
+import {FiPlay, FiPause, FiCheckCircle, FiTrash} from 'react-icons/fi'
 import api from '../../services/api'
 
 function Project({name, category, id, onClick, handleDelete}) {
@@ -51,9 +51,12 @@ function Project({name, category, id, onClick, handleDelete}) {
   }
 
   return (
-    <Card onClick={onClick}>
-      <h1>{name}</h1>
-      <button onClick={handleDelete}>excluir</button>
+    <Card >
+      <div>
+      <h1 onClick={onClick}>{name}</h1>
+      <button onClick={handleDelete}><FiTrash size={20} color="#3F3D56"/></button>
+
+      </div>
       <ActionArea>
       <h2>{timeConverter(timer)}</h2>
       <div>

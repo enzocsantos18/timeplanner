@@ -2,6 +2,13 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
 
+  button{
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 10px;
+  }
+
   background-color: white;
   width: 280px;
   border-radius: 4px;
@@ -14,18 +21,25 @@ export const Card = styled.div`
     color: #9e9e9e;
 
   }
+  div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+  }
   h1{
     color: #3d3d3d;
+  &:hover{
+    color: #8884D8;
+    cursor: pointer;
+  }
   }
 
   h2{
     margin: 0;
   }
 
-  &:hover{
-    background-color: #8884D830;
-    cursor: pointer;
-  }
 `;
 
 export const ActionArea = styled.div`
@@ -39,9 +53,6 @@ export const ActionArea = styled.div`
   }
   button{
 
-    background-color: transparent;
-    border: 0;
-    padding: 10px;
     &:hover{
 
     }

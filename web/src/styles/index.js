@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     outline: 0;
   }
+  button{
+    cursor: pointer;
+  }
   body {
     background-color: #E6E6E6;
 

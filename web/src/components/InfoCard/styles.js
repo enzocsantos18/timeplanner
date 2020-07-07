@@ -6,9 +6,7 @@ export const Card = styled.div`
   border-radius: 4px;
   padding: 20px; 
   
-  h1{
-    font-size: 20px;
-  }
+
 
   span{
     font-size: 48px;
