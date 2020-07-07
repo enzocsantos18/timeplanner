@@ -1,6 +1,8 @@
 const User = require('../models/User')
 const Project = require('../models/Project');
 const Category = require('../models/Category');
+const Time = require('../models/Time');
+
 
 const { json } = require('sequelize');
 
@@ -39,6 +41,10 @@ class ProjectController{
   }
 
   async delete(req, res){
+    await Time.destroy({
+      where:{
+        project_id: req.params.id,      }
+    })
 
      const project = await Project.destroy({
         where:{
@@ -51,6 +57,8 @@ class ProjectController{
 
         res.status(400).json({error: 'Cannot delete project'})
     }
+
+
 
     return res.json({ok: true}) 
   }

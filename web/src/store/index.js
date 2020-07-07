@@ -10,7 +10,6 @@ const sagaMonitor =
     ? console.tron.createSagaMonitor()
     : null;
 
-    console.log(sagaMonitor)
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
 const middlewares = [sagaMiddleware];

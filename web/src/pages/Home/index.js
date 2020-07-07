@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import { Container, ProjectList, InfoList, Header} from "./styles";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signOut } from "../../store/modules/auth/actions";
 
@@ -42,10 +41,17 @@ function Home() {
     if(selectedProject !== 0){
       const projectInfos = await api.get(`time/${id}`)
       setProjectInfo(projectInfos.data)
-
     }
 
   }
+
+  async function handleDelete(id){
+    await api.delete(`projects/${id}`)
+    setProjects(projects.filter(project => project.id !== id))
+    setSelectedProject(0)
+
+   }
+
   return (
     <>
       <Header>
@@ -58,7 +64,7 @@ function Home() {
       </Header>
       <Container>
         {
-          projects == 0 ? (<h1>Você ainda não tem projetos cadastrados, adicione novos projetos.</h1>)
+          projects.length === 0 ? (<h1>Você ainda não tem projetos cadastrados, adicione novos projetos.</h1>)
           :
           (
             <>
@@ -69,6 +75,7 @@ function Home() {
                   onClick={() => {
                     handleProjectClick(project.id)
                   }}
+                  handleDelete={() => handleDelete(project.id)}
                   key={project.id}
                   name={project.name}
                   id={project.id}

@@ -5,7 +5,7 @@ import { Card, ActionArea } from "./styles";
 import {FiPlay, FiPause, FiCheckCircle} from 'react-icons/fi'
 import api from '../../services/api'
 
-function Project({name, category, id, onClick}) {
+function Project({name, category, id, onClick, handleDelete}) {
   const [timer, setTimer] = useState(0);
   const [isActive, setIsActive] = useState(false);
   function handleToggle() {
@@ -53,6 +53,7 @@ function Project({name, category, id, onClick}) {
   return (
     <Card onClick={onClick}>
       <h1>{name}</h1>
+      <button onClick={handleDelete}>excluir</button>
       <ActionArea>
       <h2>{timeConverter(timer)}</h2>
       <div>

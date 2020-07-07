@@ -18,7 +18,13 @@ module.exports = {
           name: 'Organização',
           created_at: new Date(),
           updated_at: new Date()
-        }
+        },
+        {
+          name: 'Jogar',
+          created_at: new Date(),
+          updated_at: new Date()
+        },
+
     ], {});
    
   },

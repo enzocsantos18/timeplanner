@@ -25,7 +25,9 @@ class Project extends Model {
     })
     this.hasMany(models.Time,{
       foreignKey: 'project_id',
-      as : 'project'
+      as : 'project',
+      onDelete: 'cascade',
+      hooks: true, 
 
     })
   }
