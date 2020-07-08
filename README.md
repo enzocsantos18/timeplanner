@@ -2,7 +2,11 @@
 
 Um site feito para controlar o tempo gasto em seus projetos e atividades.
 
----
+## Interface
+
+<br><img src="https://github.com/enzocsantos18/timeplanner/blob/master/timeplanner.gif" height="400" width="auto" ><br>
+
+
 ## Como baixar
   - Faça o ```git clone``` desse projeto.
 
