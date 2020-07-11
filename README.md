@@ -1,13 +1,13 @@
-# TimePlanner
+# 🔥 TimePlanner
 
 Um site feito para controlar o tempo gasto em seus projetos e atividades.
 
-## Interface
+## 🖥Interface
 
 <br><img src="https://github.com/enzocsantos18/timeplanner/blob/master/timeplanner.gif" height="400" width="auto" ><br>
 
 
-## Como baixar
+## 💻 Instalar
   - Faça o ```git clone``` desse projeto.
 
     ### Backend
@@ -23,7 +23,7 @@ Um site feito para controlar o tempo gasto em seus projetos e atividades.
 
 
 
-## Tecnologias usadas
+## 👨‍💻 Tecnologias usadas
  - React JS
  - Node Js
  - Sequelize
